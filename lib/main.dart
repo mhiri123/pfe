@@ -1,24 +1,38 @@
 import 'package:flutter/material.dart';
-import 'view/screens/login_screen.dart';
+import 'package:get/get.dart';
+
+import 'app/routes/app_pages.dart';
+
 
 void main() {
   runApp(const MyApp());
-}
+
+  }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Auth App',
-      debugShowCheckedModeBanner: false,
+    return GetMaterialApp(
+      initialRoute: AppPages.INITIAL,
+      getPages: AppPages.routes,
+      title: 'Plateforme Universitaire',
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: Colors.black,
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.cyanAccent,
+            foregroundColor: Colors.black,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+            elevation: 20,
+            shadowColor: Colors.cyanAccent,
+          ),
+        ),
       ),
-      home: LoginScreen(),
-    );
+     );
   }
 }
